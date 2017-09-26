@@ -34,7 +34,7 @@ const data = [
 	formatData('buigen', 'boog', 'bogen', 'gebogen', 'to bend'),
 	formatData('denken', 'dacht', 'dachten', 'gedacht', 'to think'),
 	formatData('doen', 'deed', 'deden', 'gedaan', 'to do'),
-	formatData('doorbrengen', 'bracht door', 'brachten door', 'doorgebracht', ''),
+	formatData('doorbrengen', 'bracht door', 'brachten door', 'doorgebracht', 'to spend'),
 	formatData('dragen', 'droeg', 'droegen', 'gedragen', 'to wear'),
 	formatData('drinken', 'dronk', 'dronken', 'gedronken', 'to drink'),
 	formatData('drijven', 'dreef', 'dreven', 'hebben/zijn gedreven', 'to float'),
