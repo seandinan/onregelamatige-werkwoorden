@@ -39,6 +39,8 @@ const Input = styled.input`
 	padding: 5px 5px 5px 15px;
 	font-size: 2em;
 	color: hsl(0, 0%, 60%);
+	border-radius: 0;
+	margin: 0;
 	${props => props.isError && css`text-decoration: line-through`}
 `
 const Button = styled.button`
@@ -47,10 +49,11 @@ const Button = styled.button`
 	color: hsl(0, 0%, 40%);
 	border-radius: 5px;
 	padding: 10px;
-	font-size: 14px;
+	font-size: 2em;
 	background-color: white;
 	margin-top: 10px;
 	cursor: pointer;
+	width: 100%;
 	
 	${props => props.disabled && css`
 		background-color: hsl(0, 0%, 97%);
@@ -70,6 +73,7 @@ const Correction = styled.span`
 class Home extends React.Component {
   constructor(props){
     super(props);
+    this.startingInput;
     this.state = {
     	eng: '',
 	    ovtEnk: '',
@@ -78,13 +82,17 @@ class Home extends React.Component {
 	    errors: [],
 	    vocab: [],
 	    currentVocabIndex: 0,
+	    currentStreak: 0,
     };
   }
 
-  componentDidMount(){
+  componentWillMount(){
   	this.generateShuffledVocab();
-  	window.addEventListener('keyup', (e) => {
-  		if (e.key === 'Enter') this.handleCheck();
+  }
+
+  componentDidMount(){
+	  window.addEventListener('keyup', (e) => {
+		  if (e.key === 'Enter') this.handleCheck();
 	  })
   }
 
@@ -102,6 +110,7 @@ class Home extends React.Component {
 		  }
 
 	  this.setState({ vocab: result, errors: [], currentVocabIndex: 0 });
+	  if (this.startingInput) this.startingInput.focus();
 	  this.clearWords();
   }
 
@@ -109,17 +118,19 @@ class Home extends React.Component {
 	  const { eng, ovtEnk, ovtMv, vd, vocab, currentVocabIndex } = this.state;
 	  let errors = [];
 	  let word = vocab[currentVocabIndex];
-	  if (eng !== word.eng) errors.push('eng');
-	  if (ovtEnk !== word.ovtEnk) errors.push('ovtEnk');
-	  if (ovtMv !== word.ovtMv) errors.push('ovtMv');
-	  if (vd !== word.vd) errors.push('vd');
+	  if (eng.toLowerCase() !== word.eng) errors.push('eng');
+	  if (ovtEnk.toLowerCase() !== word.ovtEnk) errors.push('ovtEnk');
+	  if (ovtMv.toLowerCase() !== word.ovtMv) errors.push('ovtMv');
+	  if (vd.toLowerCase() !== word.vd) errors.push('vd');
 
-	  if (errors.length > 0) this.setState({ errors });
+	  if (errors.length > 0) this.setState({ errors, currentStreak: 0 });
 	  else if (currentVocabIndex === vocab.length - 1){
+	  	this.setState({ currentStreak: this.state.currentStreak + 1 });
 	  	this.generateShuffledVocab();
 	  	console.log('Proficiat!');
 	  } else {
-	  	this.setState({ currentVocabIndex: currentVocabIndex + 1, errors: [] });
+	  	this.setState({ currentVocabIndex: currentVocabIndex + 1, errors: [], currentStreak: this.state.currentStreak + 1 });
+	  	if (this.startingInput) this.startingInput.focus();
 	  	this.clearWords();
 	  }
   }
@@ -136,11 +147,11 @@ class Home extends React.Component {
 
     return (
       <Container>
-        <Title>Aankomen</Title>
+        <Title>{word.infinitief}</Title>
 	      <Wrapper>
 		      <Label>Engels:</Label>
 		      {errors.indexOf('eng') !== -1 ? <Correction>{`(${word.eng})`}</Correction> : null}
-		      <Input name="eng" isErr={errors.indexOf('eng') !== -1} value={eng} onChange={this.handleUpdate} type="text"/>
+		      <Input innerRef={ref => this.startingInput = ref} name="eng" isErr={errors.indexOf('eng') !== -1} value={eng} onChange={this.handleUpdate} type="text"/>
 	      </Wrapper>
 				<Wrapper>
 					<Label>OVT (enk.):</Label>
@@ -159,6 +170,7 @@ class Home extends React.Component {
 	      </Wrapper>
 	      <Button onClick={this.handleCheck}>Submit</Button>
 	      <Button onClick={this.generateShuffledVocab}>Reshuffle</Button>
+	      <Label style={{fontStyle: 'italic', borderBottom: 'none', marginTop: '15px'}}>Streak: {this.state.currentStreak}</Label>
       </Container>
     )
   }
