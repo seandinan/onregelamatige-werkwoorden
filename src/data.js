@@ -1,4 +1,4 @@
-const formatData = (infinitief, ovtEnk, ovtMv, vd, eng) => ({infinitief, ovtEnk, ovtMv, vd, eng});
+const formatData = (infinitief, ovtEnk, ovtMv, vd, eng) => ({ infinitief, ovtEnk, ovtMv, vd, eng });
 
 const data = [
 	formatData('aankomen', 'kwam aan', 'kwamen aan', 'zijn aangekomen', 'to arrive'),
@@ -47,6 +47,49 @@ const data = [
 	formatData('gelden', 'gold', 'golden', 'gegolden', 'to apply'),
 	formatData('genezen', 'genas', 'genazen', 'hebben/zijn genezen', 'to cure'),
 	formatData('genieten', 'genoot', 'genoten', 'genoten', 'to enjoy'),
+
+	formatData('geven', 'gaf', 'gaven', 'gegeven', 'to give'),
+	formatData('gieten', 'goot', 'goten', 'gegoten', 'to pour'),
+	formatData('glijden', 'gleed', 'gleden', 'hebben/zijn gegleden', 'to slide'),
+	formatData('glimmen', 'glom', 'glommen', 'geglommen', 'to glow'),
+	formatData('graven', 'groef', 'groeven', 'gegraven', 'to dig'),
+	formatData('grijpen', 'greep', 'grepen', 'gegrepen', 'to grab'),
+	formatData('hangen', 'hing', 'hingen', 'gehangen', 'to hang'),
+	formatData('helpen', 'hielp', 'hielpen', 'geholpen', 'to help'),
+	formatData('heten', 'heette', 'heetten', 'geheten', 'to call'),
+	formatData('houden', 'hield', 'hielden', 'gehouden', 'to hold'),
+	formatData('inbreken', 'brak in', 'braken in', 'ingebroken', 'to break in'),
+	formatData('zich inhouden', 'hield zich in', 'hielden zich in', 'zich ingehouden', 'to hold in'),
+	formatData('invriezen', 'vroor in', 'vroren in', 'ingevroren', 'to freeze through'),
+	formatData('inzien', 'zag in', 'zagen in', 'ingezien', 'to acknowledge'),
+	formatData('innemen', 'nam in', 'namen in', 'ingenomen', 'to consume'),
+	formatData('kiezen', 'koos', 'kozen', 'gekozen', 'to choose'),
+	formatData('kijken', 'keek', 'keken', 'gekeken', 'to look'),
+	formatData('klimmen', 'klom', 'klommen', 'hebben/zijn geklommen', 'to climb'),
+	formatData('klinken', 'klonk', 'klonken', 'geklonken', 'to sound'),
+	formatData('kopen', 'kocht', 'kochten', 'gekocht', 'to buy'),
+	formatData('krimpen', 'kromp', 'krompen', 'gekrompen', 'to shrink'),
+	formatData('kruipen', 'kroop', 'kropen', 'hebben/zijn gekropen', 'to crawl'),
+	formatData('kunnen', 'kon', 'konden', 'gekund', 'to be able to'),
+	formatData('lachen', 'lachte', 'lachten', 'gelachen', 'to laugh'),
+	formatData('laden', 'laadde', 'laadden', 'geladen', 'to load'),
+	formatData('laten', 'liet', 'lieten', 'gelaten', 'to let'),
+	formatData('lezen', 'las', 'lazen', 'gelezen', 'to read'),
+	formatData('liegen', 'loog', 'logen', 'gelogen', 'to tell lies'),
+	formatData('liggen', 'lag', 'lagen', 'gelegen', 'to lie'),
+	formatData('lijden', 'leed', 'leden', 'geleden', 'to suffer'),
+	formatData('lijken', 'leek', 'leken', 'geleken', 'to look like'),
+	formatData('vallen', 'viel', 'vielen', 'gevallen', 'to fall'),
+	formatData('meten', 'mat', 'maten', 'gemeten', 'to measure'),
+	formatData('moeten', 'moest', 'moesten', 'gemoeten', 'to have to'),
+	formatData('mogen', 'mocht', 'mochten', 'gemogen', 'to be allowed to'),
+	formatData('nemen', 'nam', 'namen', 'genomen', 'to take'),
+	formatData('zoeken', 'zocht', 'zochten', 'gezocht', 'to look for'),
+	formatData('ontbijten', 'ontbeet', 'ontbeten', 'ontbeten', 'to eat breakfast'),
+	formatData('onthouden', 'onthield', 'onthielden', 'onthouden', 'to recall'),
+	formatData('ontvangen', 'ontving', 'ontvingen', 'ontvangen', 'to receive'),
+	formatData('ontwerpen', 'ontwierp', 'ontwierpen', 'ontworpen', 'to design'),
+
 ]
 
 export default data;
